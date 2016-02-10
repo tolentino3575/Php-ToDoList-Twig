@@ -22,17 +22,13 @@
     $app->post("/tasks", function() use ($app) {//create task page
         $task = new Task($_POST['description']);
         $task->save();
-        return $app['twig']->render('create_task.html.twig');
+        return $app['twig']->render('create_task.html.twig', array('newtask' => $task));
     });
 
-    $app->post("/delete_tasks", function() {
+    $app->post("/delete_tasks", function() use ($app) {
 
         Task::deleteAll();
-
-        return "
-            <h1>List Cleared!</h1>
-            <p><a href='/'>Home</a></p>
-        ";
+        return $app['twig']->render('delete_tasks.html.twig');
     });
 
     return $app;
