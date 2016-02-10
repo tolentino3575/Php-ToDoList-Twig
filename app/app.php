@@ -1,12 +1,12 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/Task.php";
+    require_once __DIR__."/../src/task.php";
 
     session_start();
 
     if (empty($_SESSION['list_of_tasks'])) {
     $_SESSION['list_of_tasks'] = array();
-    }
+    }//storing tasks in user's cookies
 
     $app = new Silex\Application();
 
